@@ -3,9 +3,7 @@ version: "3.9"
 services:
   squadcms:
     build:
-      context: .
-      dockerfile: Dockerfile
-    image: squadcms:latest
+    image: ${IMAGE_NAME}:${IMAGE_TAG:-latest}
     container_name: squadcms
     restart: unless-stopped
     ports:
