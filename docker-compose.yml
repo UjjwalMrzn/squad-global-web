@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  squadCMS:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: squadCMS:latest
+    container_name: squadCMS
+    restart: unless-stopped
+    ports:
+      - "4000:4000"

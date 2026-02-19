@@ -1,0 +1,97 @@
+name: Deploy Frontend to Server 1
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build-and-push: # FIXED: Name now matches the 'needs' requirement below
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # Updated to v4 for consistency
+
+      - name: Set lower case owner and repo name
+        run: |
+          echo "IMAGE_NAME=${GITHUB_REPOSITORY,,}" >> ${GITHUB_ENV}
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx # FIXED: Required for build-push-action
+        uses: docker/setup-buildx-action@v3
+
+      - name: Create .env file
+        run: |
+          echo "🧹 Deleting old config files..."
+          rm -f .env .env.production .env.local
+
+          echo "📝 Creating fresh Production config..."
+          touch .env.production
+
+          # FIXED: Changed REACT_APP_ to VITE_ 
+          echo "VITE_APP_URL=https://your-api-domain.com" >> .env.production
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ env.IMAGE_NAME }}:latest
+            ghcr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+  deploy:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set lower case owner and repo name
+        run: |
+          echo "IMAGE_NAME=${GITHUB_REPOSITORY,,}" >> ${GITHUB_ENV}
+
+      - name: Copy Files to Server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.AWS_SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: "docker-compose.yml"
+          target: "${{ secrets.REMOTE_APP_DIR }}"
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.AWS_SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            # Log in to GitHub Container Registry
+            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+            cd ${{ secrets.REMOTE_APP_DIR }} || { echo "Directory not found"; exit 1; }
+
+            # Pull the new react image
+            docker pull ghcr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+            # Export tags for Docker Compose to use
+            export IMAGE_NAME=ghcr.io/${{ env.IMAGE_NAME }}
+            export IMAGE_TAG=${{ github.sha }}
+
+            # Restart containers
+            docker compose up -d
+
+            # Clean up old images to save disk space on the server
+            docker image prune -af
