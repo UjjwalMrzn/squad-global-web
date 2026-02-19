@@ -1,34 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  /* Squad Global Ultra-Premium Dark Palette */
-  --color-brand-deepblue: #050A15; /* Deepened for maximum contrast */
+  --color-brand-deepblue: #020617;
   --color-brand-cyan: #00E5FF;
-  --color-brand-charcoal: #0F1523; /* Sleek, structural dark gray */
-  --color-brand-black: #000000;
+  
+  /* Precision Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* Base resets for a world-class typographic feel */
+h1, h2, h3 {
+  /* This creates that 'solid block' look */
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+}
+
 body {
   background-color: var(--color-brand-deepblue);
-  color: #FAFAFA;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-
-/* Subtle custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--color-brand-deepblue);
-}
-::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-brand-cyan);
 }

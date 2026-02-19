@@ -25,10 +25,11 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="w-full"
         >
+          {/* Added "Seamless" to match the client DOCX exactly */}
           <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold text-white tracking-tighter leading-[1.1] mb-8">
             The Intelligence Behind <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-brand-cyan to-blue-600">
-              Global Connectivity.
+              Seamless Global Connectivity.
             </span>
           </h1>
         </motion.div>

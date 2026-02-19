@@ -7,28 +7,40 @@ interface ButtonProps extends HTMLMotionProps<"button"> {
   icon?: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({ variant = 'primary', children, icon, className = '', ...props }) => {
-  const baseStyle = "flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-base transition-all duration-300 relative overflow-hidden group";
+const Button: React.FC<ButtonProps> = ({ 
+  variant = 'primary', 
+  children, 
+  icon, 
+  className = '', 
+  ...props 
+}) => {
+  // Balanced architectural base - uniform rounding (rounded-lg) and precise padding
+  const baseStyle = "flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-bold text-sm tracking-widest uppercase transition-all duration-200 relative overflow-hidden group select-none active:scale-[0.98]";
   
   const variants = {
-    primary: "bg-brand-cyan text-brand-black hover:shadow-[0_0_30px_rgba(0,229,255,0.3)] hover:-translate-y-0.5",
-    outline: "bg-brand-charcoal/50 border border-white/10 text-white hover:border-brand-cyan/50 hover:bg-brand-cyan/5 backdrop-blur-sm",
-    ghost: "bg-transparent text-gray-400 hover:text-white px-4 py-2"
+    // Primary: Solid, flat cyan. Hover uses a slight darkening for a physical feel.
+    primary: "bg-brand-cyan text-black hover:bg-[#00D1E9]",
+    
+    // Outline: Clean 1px border. No glass, no blur. Just precision.
+    outline: "bg-transparent border border-white/20 text-white hover:border-brand-cyan hover:bg-white/[0.05]",
+    
+    // Ghost: Minimalist text.
+    ghost: "bg-transparent text-gray-400 hover:text-white"
   };
 
   return (
     <motion.button 
-      whileTap={{ scale: 0.97 }}
+      whileTap={{ scale: 0.98 }}
       className={`${baseStyle} ${variants[variant]} ${className}`} 
       {...props}
     >
-      {/* Subtle shine effect on primary button */}
-      {variant === 'primary' && (
-        <div className="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/40 to-transparent z-0"></div>
-      )}
       <span className="relative z-10 flex items-center gap-2">
         {children}
-        {icon && <span className="transition-transform group-hover:translate-x-1">{icon}</span>}
+        {icon && (
+          <span className="transition-transform group-hover:translate-x-0.5">
+            {icon}
+          </span>
+        )}
       </span>
     </motion.button>
   );

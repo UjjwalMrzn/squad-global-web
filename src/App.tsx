@@ -1,15 +1,15 @@
-// import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer'; // <-- IMPORTED FOOTER
 import ScrollToTop from './components/ui/ScrollToTop';
 
-// We will build these page components next
+// Page components
 import Home from './pages/Home';
 import Solutions from './pages/Solutions';
 import Platform from './pages/Platform';
-// import About from './pages/About';
-// import CaseStudies from './pages/CaseStudies';
-// import Contact from './pages/Contact';
+import About from './pages/About';
+import CaseStudies from './pages/CaseStudies';
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -22,12 +22,13 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/solutions" element={<Solutions />} />
             <Route path="/platform" element={<Platform />} />
-            {/* <Route path="/about" element={<About />} /> */}
-            {/* <Route path="/case-studies" element={<CaseStudies />} /> */}
-            {/* <Route path="/contact" element={<Contact />} /> */}
+            <Route path="/about" element={<About />} />
+            <Route path="/case-studies" element={<CaseStudies />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
         
+        <Footer /> {/* <-- ADDED FOOTER HERE */}
         <ScrollToTop />
       </div>
     </Router>

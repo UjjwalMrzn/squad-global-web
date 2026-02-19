@@ -49,7 +49,7 @@ const ValueProps: React.FC = () => {
         
         <SectionHeader 
           title="Engineered for" 
-          highlightText="Performance" 
+          highlight="Performance" 
           subtitle="Key Value Propositions"
         />
 

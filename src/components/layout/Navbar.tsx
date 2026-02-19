@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Globe } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Button from '../ui/Button';
 
 const Navbar: React.FC = () => {
@@ -14,7 +15,6 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
@@ -25,10 +25,15 @@ const Navbar: React.FC = () => {
     { name: 'Platform', path: '/platform' },
     { name: 'About Us', path: '/about' },
     { name: 'Case Studies', path: '/case-studies' },
+    { name: 'Contact', path: '/contact' },
   ];
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-brand-deepblue/60 backdrop-blur-xl border-b border-white/5 py-4' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${
+      scrolled 
+        ? 'bg-brand-deepblue/95 backdrop-blur-md border-b border-white/10 py-4 shadow-2xl' 
+        : 'bg-transparent py-6'
+    }`}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center">
           
@@ -39,6 +44,7 @@ const Navbar: React.FC = () => {
             </span>
           </Link>
 
+          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.path;
@@ -46,53 +52,67 @@ const Navbar: React.FC = () => {
                 <Link 
                   key={link.name} 
                   to={link.path} 
-                  className={`text-sm font-medium tracking-wide transition-colors duration-300 ${isActive ? 'text-brand-cyan' : 'text-gray-400 hover:text-white'}`}
+                  className={`text-sm font-bold uppercase tracking-widest transition-all duration-300 relative group/link ${
+                    isActive ? 'text-brand-cyan' : 'text-gray-400 hover:text-white'
+                  }`}
                 >
                   {link.name}
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-brand-cyan transition-all duration-300 ${
+                    isActive ? 'w-full' : 'w-0 group-hover/link:w-full'
+                  }`} />
                 </Link>
               );
             })}
-            <div className="flex items-center gap-4 pl-4 border-l border-white/10">
+            <div className="flex items-center pl-4 border-l border-white/10">
               <Link to="/contact">
-                <Button variant="outline" className="!px-5 !py-2 !text-sm">Contact Sales</Button>
-              </Link>
-              <Link to="/contact">
-                <Button variant="primary" className="!px-5 !py-2 !text-sm">Request Demo</Button>
+                <Button variant="primary" className="!px-6 !py-2.5 !text-xs !font-bold tracking-wider uppercase">
+                  Request Demo
+                </Button>
               </Link>
             </div>
           </div>
 
+          {/* Mobile Toggle */}
           <div className="lg:hidden flex items-center">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-400 hover:text-white">
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            <button onClick={() => setIsOpen(!isOpen)} className="text-gray-400 hover:text-white transition-colors">
+              {isOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
             </button>
           </div>
         </div>
       </div>
 
-      {isOpen && (
-        <div className="lg:hidden bg-brand-deepblue/95 backdrop-blur-2xl border-b border-white/10 absolute w-full left-0 top-full shadow-2xl">
-          <div className="px-6 py-8 space-y-4 flex flex-col">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                to={link.path} 
-                className={`text-lg font-medium ${location.pathname === link.path ? 'text-brand-cyan' : 'text-gray-300 hover:text-white'}`}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="pt-6 flex flex-col gap-3 border-t border-white/5">
-              <Link to="/contact" className="w-full">
-                <Button variant="outline" className="w-full">Contact Sales</Button>
-              </Link>
-              <Link to="/contact" className="w-full">
-                <Button variant="primary" className="w-full">Request Demo</Button>
-              </Link>
+      {/* Animated Mobile Menu */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-brand-deepblue border-b border-white/10 absolute w-full left-0 top-full shadow-2xl overflow-hidden"
+          >
+            <div className="px-6 py-10 space-y-6 flex flex-col">
+              {navLinks.map((link) => (
+                <Link 
+                  key={link.name} 
+                  to={link.path} 
+                  className={`text-xl font-bold uppercase tracking-widest ${
+                    location.pathname === link.path ? 'text-brand-cyan' : 'text-gray-300'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <div className="pt-6 border-t border-white/5">
+                <Link to="/contact" className="w-full">
+                  <Button variant="primary" className="w-full py-4 text-sm font-bold uppercase">
+                    Request Demo
+                  </Button>
+                </Link>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
