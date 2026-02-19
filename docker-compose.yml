@@ -1,8 +1,5 @@
-version: "3.9"
-
 services:
   squadcms:
-    build:
     image: ${IMAGE_NAME}:${IMAGE_TAG:-latest}
     container_name: squadcms
     restart: unless-stopped
