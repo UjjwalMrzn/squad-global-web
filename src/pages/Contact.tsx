@@ -57,7 +57,7 @@ Al Messaned, Al Bataeh, Sharjah, United Arab Emirates</p>
                   <h4 className="text-xl font-bold text-white mb-2 tracking-tight">Contact Info</h4>
                   <div className="space-y-1 text-base text-gray-300 font-normal">
                     <p>Email: sales@squadglobal.com</p>
-                    <p>Phone: —</p>
+                    <p>Phone: +971559468495</p>
                   </div>
                 </div>
               </div>
