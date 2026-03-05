@@ -7,16 +7,11 @@ import Button from '../components/ui/Button';
 const Contact: React.FC = () => {
   return (
     <div className="pt-32 pb-24 bg-brand-deepblue min-h-screen relative overflow-hidden">
-      
-      {/* Background Glow */}
       <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-brand-cyan/5 blur-[120px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        
-        {/* Balanced, vertically centered grid */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
-          {/* Info Side */}
           <div className="py-4">
             <SectionHeader 
               align="left"
@@ -63,7 +58,6 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Form Side - Compact, grounded design */}
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -73,24 +67,25 @@ const Contact: React.FC = () => {
           >
             <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-brand-cyan/5 blur-[100px] rounded-full group-hover:bg-brand-cyan/10 transition-colors duration-700"></div>
 
+            {/* FIXED: Added htmlFor and id to link labels and inputs, changed text-gray-500 to text-gray-400 */}
             <form className="space-y-5 relative z-10">
               <div className="grid md:grid-cols-2 gap-5">
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] ml-1">Name</label>
-                  <input type="text" className="w-full bg-brand-charcoal border border-white/10 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-brand-cyan transition-colors placeholder:text-gray-600" placeholder="Full Name" />
+                  <label htmlFor="inputName" className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] ml-1">Name</label>
+                  <input id="inputName" type="text" className="w-full bg-brand-charcoal border border-white/10 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-brand-cyan transition-colors placeholder:text-gray-600" placeholder="Full Name" />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] ml-1">Company</label>
-                  <input type="text" className="w-full bg-brand-charcoal border border-white/10 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-brand-cyan transition-colors placeholder:text-gray-600" placeholder="Company Name" />
+                  <label htmlFor="inputCompany" className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] ml-1">Company</label>
+                  <input id="inputCompany" type="text" className="w-full bg-brand-charcoal border border-white/10 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-brand-cyan transition-colors placeholder:text-gray-600" placeholder="Company Name" />
                 </div>
               </div>
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] ml-1">Email Address</label>
-                <input type="email" className="w-full bg-brand-charcoal border border-white/10 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-brand-cyan transition-colors placeholder:text-gray-600" placeholder="sales@squadglobal.com" />
+                <label htmlFor="inputEmail" className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] ml-1">Email Address</label>
+                <input id="inputEmail" type="email" className="w-full bg-brand-charcoal border border-white/10 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-brand-cyan transition-colors placeholder:text-gray-600" placeholder="sales@squadglobal.com" />
               </div>
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] ml-1">Message</label>
-                <textarea rows={4} className="w-full bg-brand-charcoal border border-white/10 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-brand-cyan transition-colors resize-none placeholder:text-gray-600" placeholder="Tell us about your routing needs..."></textarea>
+                <label htmlFor="inputMessage" className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] ml-1">Message</label>
+                <textarea id="inputMessage" rows={4} className="w-full bg-brand-charcoal border border-white/10 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-brand-cyan transition-colors resize-none placeholder:text-gray-600" placeholder="Tell us about your routing needs..."></textarea>
               </div>
               <Button variant="primary" className="w-full py-3.5 text-base font-bold mt-2" icon={<Send className="w-4 h-4" />}>
                 Send Request

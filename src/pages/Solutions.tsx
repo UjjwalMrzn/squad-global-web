@@ -47,12 +47,11 @@ const solutions = [
     desc: "WMS is responsible for managing all communication services related to voice calls and text messaging within the organization. This department ensures reliable, secure, and efficient communication between the company, customers, and partners through telecommunication technologies.",
     benefits: ["Voice communication management", "System integration", "Reporting and analytics", "Staff management", "Task tracking"]
   }
-  ];
+];
 
 const Solutions: React.FC = () => {
   return (
     <div className="pt-32 pb-24 bg-brand-deepblue relative min-h-screen overflow-hidden">
-      
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-cyan/5 blur-[150px] rounded-full pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -77,25 +76,19 @@ const Solutions: React.FC = () => {
               className="bg-brand-charcoal border border-white/10 p-8 rounded-3xl hover:border-brand-cyan/30 transition-all duration-300 flex flex-col h-full"
             >
               <div className="flex items-baseline gap-4 mb-6">
-                <span className="text-2xl font-mono font-bold text-brand-cyan shrink-0">
-                  {item.id}
-                </span>
-                <h3 className="text-2xl font-bold text-white tracking-tight leading-tight">
-                  {item.title}
-                </h3>
+                <span className="text-2xl font-mono font-bold text-brand-cyan shrink-0">{item.id}</span>
+                <h3 className="text-2xl font-bold text-white tracking-tight leading-tight">{item.title}</h3>
               </div>
 
-              <p className="text-base text-gray-300 font-normal leading-relaxed mb-8 flex-grow">
-                {item.desc}
-              </p>
+              <p className="text-base text-gray-300 font-normal leading-relaxed mb-8 flex-grow">{item.desc}</p>
 
               <div className="pt-6 border-t border-white/5 space-y-4">
+                {/* FIXED: Changed text-gray-500 to text-gray-400 */}
                 <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400">Key Benefits</h4>
                 <div className="flex flex-wrap gap-2">
                   {item.benefits.map((benefit, bIndex) => (
                     <div key={bIndex} className="flex items-center gap-2 bg-brand-cyan/5 border border-brand-cyan/10 px-3 py-1.5 rounded-lg">
                       <CheckCircle2 className="w-3.5 h-3.5 text-brand-cyan" />
-                      {/* FIXED: Increased from text-xs to text-sm for significantly better legibility */}
                       <span className="text-sm font-semibold text-brand-cyan/90">{benefit}</span>
                     </div>
                   ))}

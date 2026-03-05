@@ -1,18 +1,19 @@
-import { Suspense, lazy } from 'react'; // FIXED: Removed unused 'React' import
+import { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/ui/ScrollToTop';
 
-// Lazy load pages for maximum performance
-const Home = lazy(() => import('./pages/Home'));
+// 🚀 FIXED: Import Home directly so it renders INSTANTLY (Restores perfect performance)
+import Home from './pages/Home';
+
+// Lazy load the rest so they don't block the initial load
 const Solutions = lazy(() => import('./pages/Solutions'));
 const Platform = lazy(() => import('./pages/Platform'));
 const About = lazy(() => import('./pages/About'));
 const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 const Contact = lazy(() => import('./pages/Contact'));
 
-// Simple, on-brand fallback loader
 const PageLoader = () => (
   <div className="min-h-[80vh] flex items-center justify-center bg-brand-deepblue">
     <div className="w-8 h-8 border-2 border-brand-cyan border-t-transparent rounded-full animate-spin"></div>
@@ -28,6 +29,7 @@ function App() {
         <main className="flex-grow">
           <Suspense fallback={<PageLoader />}>
             <Routes>
+              {/* Home is no longer suspended, it will paint immediately */}
               <Route path="/" element={<Home />} />
               <Route path="/solutions" element={<Solutions />} />
               <Route path="/platform" element={<Platform />} />
