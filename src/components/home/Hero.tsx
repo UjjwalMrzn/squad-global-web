@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Activity } from 'lucide-react';
+import { Link } from 'react-router-dom'; // <-- Imported Link for routing
 import Badge from '../ui/Badge';
 import Button from '../ui/Button';
 
@@ -49,12 +50,18 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto"
         >
-          <Button variant="primary" icon={<ArrowRight className="w-4 h-4" />}>
-            Start Routing Intelligently
-          </Button>
-          <Button variant="outline">
-            Explore Platform
-          </Button>
+          {/* Wrapped in Links to handle page routing */}
+          <Link to="/contact" className="w-full sm:w-auto">
+            <Button variant="primary" icon={<ArrowRight className="w-4 h-4" />} className="w-full">
+              Start Routing Intelligently
+            </Button>
+          </Link>
+          
+          <Link to="/platform" className="w-full sm:w-auto">
+            <Button variant="outline" className="w-full">
+              Explore Platform
+            </Button>
+          </Link>
         </motion.div>
 
       </div>
