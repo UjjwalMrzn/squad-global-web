@@ -49,14 +49,14 @@ const CaseStudies: React.FC = () => {
                 {/* Challenge & Solution Side */}
                 <div className="space-y-8">
                   <div>
-                    <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">Challenge</h4>
+                    <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Challenge</h4>
                     {/* FIXED: Standardized to text-base, gray-300, and font-normal */}
                     <p className="text-base text-gray-300 font-normal leading-relaxed">
                       The client was struggling with manual routing updates and had no visibility into actual carrier performance, leading to high costs and undelivered messages.
                     </p>
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">Solution</h4>
+                    <h4 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Solution</h4>
                     {/* FIXED: Standardized to text-base, gray-300, and font-normal */}
                     <p className="text-base text-gray-300 font-normal leading-relaxed">
                       Implementation of Squad Global’s Dynamic Routing Engine with Quality Based Routing.

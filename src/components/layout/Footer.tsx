@@ -26,13 +26,13 @@ const Footer: React.FC = () => {
               Next-generation software intelligence for global messaging infrastructure and profitable routing.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-brand-cyan hover:border-brand-cyan/30 hover:bg-brand-cyan/5 transition-all">
-                <Linkedin size={20} />
-              </a>
-              <a href="#" className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-brand-cyan hover:border-brand-cyan/30 hover:bg-brand-cyan/5 transition-all">
-                <Twitter size={20} />
-              </a>
-            </div>
+  <a href="#" aria-label="LinkedIn Profile" className="p-3 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-brand-cyan hover:border-brand-cyan/30 hover:bg-brand-cyan/5 transition-all">
+    <Linkedin size={20} />
+  </a>
+  <a href="#" aria-label="Twitter Profile" className="p-3 rounded-xl bg-white/5 border border-white/10 text-gray-400 hover:text-brand-cyan hover:border-brand-cyan/30 hover:bg-brand-cyan/5 transition-all">
+    <Twitter size={20} />
+  </a>
+</div>
           </div>
 
           {/* Navigation */}
@@ -72,14 +72,9 @@ Al Messaned, Al Bataeh, Sharjah, United Arab Emirates</span>
 
         {/* Bottom Bar */}
         {/* FIXED: text-xs instead of text-[10px] for better clarity */}
-        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-bold uppercase tracking-[0.2em] text-gray-500">
-          <p className="text-center md:text-left">© {currentYear} SQUAD GLOBAL LLC. ALL RIGHTS RESERVED.</p>
-          {/* <div className="flex gap-8">
-            <span className="hover:text-brand-cyan transition-colors cursor-default">London</span>
-            <span className="hover:text-brand-cyan transition-colors cursor-default">Dubai</span>
-            <span className="hover:text-brand-cyan transition-colors cursor-default">Singapore</span>
-          </div> */}
-        </div>
+        <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-xs font-bold uppercase tracking-[0.2em] text-gray-400">
+  <p className="text-center md:text-left">© {currentYear} SQUAD GLOBAL LLC. ALL RIGHTS RESERVED.</p>
+</div>
       </div>
     </footer>
   );

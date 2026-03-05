@@ -76,20 +76,20 @@ const Contact: React.FC = () => {
             <form className="space-y-5 relative z-10">
               <div className="grid md:grid-cols-2 gap-5">
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] ml-1">Name</label>
+                  <label className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] ml-1">Name</label>
                   <input type="text" className="w-full bg-brand-charcoal border border-white/10 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-brand-cyan transition-colors placeholder:text-gray-600" placeholder="Full Name" />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] ml-1">Company</label>
+                  <label className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] ml-1">Company</label>
                   <input type="text" className="w-full bg-brand-charcoal border border-white/10 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-brand-cyan transition-colors placeholder:text-gray-600" placeholder="Company Name" />
                 </div>
               </div>
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] ml-1">Email Address</label>
+                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] ml-1">Email Address</label>
                 <input type="email" className="w-full bg-brand-charcoal border border-white/10 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-brand-cyan transition-colors placeholder:text-gray-600" placeholder="sales@squadglobal.com" />
               </div>
               <div className="space-y-1.5">
-                <label className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] ml-1">Message</label>
+                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em] ml-1">Message</label>
                 <textarea rows={4} className="w-full bg-brand-charcoal border border-white/10 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-brand-cyan transition-colors resize-none placeholder:text-gray-600" placeholder="Tell us about your routing needs..."></textarea>
               </div>
               <Button variant="primary" className="w-full py-3.5 text-base font-bold mt-2" icon={<Send className="w-4 h-4" />}>

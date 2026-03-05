@@ -90,7 +90,7 @@ const Solutions: React.FC = () => {
               </p>
 
               <div className="pt-6 border-t border-white/5 space-y-4">
-                <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-500">Key Benefits</h4>
+                <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400">Key Benefits</h4>
                 <div className="flex flex-wrap gap-2">
                   {item.benefits.map((benefit, bIndex) => (
                     <div key={bIndex} className="flex items-center gap-2 bg-brand-cyan/5 border border-brand-cyan/10 px-3 py-1.5 rounded-lg">
