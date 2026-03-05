@@ -33,9 +33,21 @@ const solutions = [
     id: "05",
     title: "Messaging Analytics & Reporting",
     desc: "Move beyond basic CDRs. Our visualization tools provide deep insights into traffic patterns, message lifecycle, revenue waterfalls, and carrier quality.",
-    benefits: ["Data-driven decisions", "Instant troubleshooting", "Executive reporting"]
+    benefits: ["Data driven decisions", "Instant troubleshooting", "Executive reporting"]
+  },
+  {
+    id: "06",
+    title: "Restaurant Management Software",
+    desc: "Restaurant Management Software is a complete digital solution designed to simplify and automate restaurant operations. It helps restaurant owners manage orders, billing, tables, inventory, staff, and reports efficiently from a single system.",
+    benefits: ["Order management", "Kitchen management", "Table management", "Inventory management", "Customer management", "Reports and analytics"]
+  },
+  {
+    id: "07",
+    title: "Workflow Management System",
+    desc: "WMS is responsible for managing all communication services related to voice calls and text messaging within the organization. This department ensures reliable, secure, and efficient communication between the company, customers, and partners through telecommunication technologies.",
+    benefits: ["Voice communication management", "System integration", "Reporting and analytics", "Staff management", "Task tracking"]
   }
-];
+  ];
 
 const Solutions: React.FC = () => {
   return (
