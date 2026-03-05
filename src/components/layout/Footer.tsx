@@ -60,7 +60,8 @@ const Footer: React.FC = () => {
             <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-8">Global Operations</h4>
             <div className="flex items-start gap-3 text-base text-gray-400 font-normal">
               <MapPin size={20} className="text-brand-cyan shrink-0 mt-0.5" />
-              <span>XYZ, Dubai, UAE</span>
+              <span>XShams Free Zone
+Al Messaned, Al Bataeh, Sharjah, United Arab Emirates</span>
             </div>
             <div className="flex items-start gap-3 text-base text-gray-400 font-normal">
               <Mail size={20} className="text-brand-cyan shrink-0 mt-0.5" />

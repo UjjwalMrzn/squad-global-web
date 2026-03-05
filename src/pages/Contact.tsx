@@ -44,7 +44,8 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-white mb-2 tracking-tight">Office Locations</h4>
-                  <p className="text-base text-gray-300 font-normal">XYZ, Dubai</p>
+                  <p className="text-base text-gray-300 font-normal">Shams Free Zone
+Al Messaned, Al Bataeh, Sharjah, United Arab Emirates</p>
                 </div>
               </div>
 
